@@ -1,0 +1,45 @@
+.card_list
+    .load(ng-show="!home.people.list") Loading People =}
+    .gone(ng-show="home.people.list.length == 0 && !home.newPerson") Add People =}
+    ul(ng-show="home.people.list.length > 0 || home.newPerson")
+        li(ng-if="home.newPerson")
+            .card
+                .load-markup(ng-show="home.newPerson.status.request && !home.newPerson.status.response") loading..
+                .create
+                    .remove
+                        button(ng-click="home.undo()") undo
+
+                    .text
+                        input(type="text", ng-model="home.newPerson.name", placeholder="Name*", maxlength="19")
+                        input(type="text", ng-model="home.newPerson.job", placeholder="Job*", maxlength="19")
+                        input(type="text", ng-model="home.newPerson.image", placeholder="Image url")
+
+                    .done(ng-class="{ active: home.newPerson.name && home.newPerson.job }")
+                        button(ng-click="home.newPerson.name && home.newPerson.job && home.requestCreate(home.newPerson)") create
+        li(
+            ng-repeat="person in home.people.list | orderBy:$index:true",
+            ng-class="{ active : $index == home.active }"
+        )
+            .card
+                .load-markup(ng-show="home.loadSave(person) || home.loadRemove(person)") loading..
+                .front
+                    .image
+                        .circle
+                            img(ng-src="{{person.image}}")
+                    .text
+                        h3 {{ person.name }}
+                        p {{ person.job }}
+                    .button
+                        button(ng-click="home.edit($index)") edit
+
+                .back
+                    .remove
+                        button(ng-click="home.requestRemove(person._id)") remove
+
+                    .text
+                        input(type="text", ng-model="person.name", maxlength="19")
+                        input(type="text", ng-model="person.job", maxlength="19")
+                        input(type="text", ng-model="person.image")
+
+                    .done
+                        button(ng-click="home.requestSave(person)") done

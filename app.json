@@ -1,0 +1,7 @@
+{
+    "name": "Angular RESTful",
+    "description": "The focus right here is demonstrate an app that consumes mongoDB database integrated with RESTful APIs and runs angular js in the client for integration.",
+    "repository": "https://wesley_custom@bitbucket.org/wesley_custom/angular-restful.git",
+    "keywords": ["node", "express", "angularjs", "mongoDB", "mongoose", "RESTful API"],
+    "image": "heroku/nodejs"
+}

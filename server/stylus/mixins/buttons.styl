@@ -1,0 +1,46 @@
+/* ==========================================================================
+   -- Buttons
+   ========================================================================== */
+
+
+    /**
+        @description Default green button with white text
+    */
+    button_green()
+        transition background-color .25s
+        openSans()
+        box-sizing border-box
+        font-weight 700
+        font-size 14px
+        text-transform uppercase
+        color white
+        border-radius 6px
+        background-color green
+        padding 13px 20px
+        margin 0
+        border 0
+
+    button_green_hover()
+        background-color gree_soft
+
+
+    /**
+        @description Remove people button
+    */
+    button_remove()
+        openSans()
+        font-weight 700
+        color red
+        font-size 14px
+        text-transform uppercase
+        text-decoration underline
+        background transparent
+        border 0
+
+
+    /**
+        @description Back Card Done button
+    */
+    button_done()
+        button_remove()
+        color green_lighter
